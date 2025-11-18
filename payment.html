@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mini Shop — Payment</title>
+  <style>
+    :root{--accent:#2874f0;--muted:#6b7280;--bg:#f6f8fb;--card:#fff;--radius:12px;--shadow:0 10px 30px rgba(15,23,42,0.06);--maxw:720px;}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;background:var(--bg);color:#0f172a}
+    .wrap{max-width:var(--maxw);margin:26px auto;padding:18px}
+    header{display:flex;align-items:center;justify-content:space-between}
+    .logo{width:46px;height:46px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800}
+    .card{background:var(--card);padding:18px;border-radius:var(--radius);box-shadow:var(--shadow);margin-top:18px}
+    form{display:grid;gap:12px}
+    .row{display:flex;gap:12px}
+    .col{flex:1}
+    label{display:block;font-weight:700;font-size:13px;margin-bottom:6px}
+    input,select,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e6e9ef;font-size:14px}
+    .small{font-size:13px;color:var(--muted)}
+    .total{display:flex;justify-content:space-between;align-items:center;padding:12px;border-radius:10px;background:#fbfcff;border:1px solid #eef2ff}
+    .btn{background:var(--accent);color:#fff;padding:12px 14px;border-radius:10px;text-decoration:none;font-weight:800;border:none;cursor:pointer}
+    .btn.ghost{background:#fff;color:var(--accent);border:1px solid rgba(40,116,240,0.12)}
+    footer{margin-top:24px;color:var(--muted);text-align:center}
+    @media (max-width:680px){ .row{flex-direction:column} }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div style="display:flex;gap:12px;align-items:center">
+        <div class="logo">MS</div>
+        <div>
+          <div style="font-weight:800">Mini Shop</div>
+          <div style="color:var(--muted);font-size:12px">Secure payment (demo)</div>
+        </div>
+      </div>
+      <a class="btn ghost" href="products.html">Back to Products</a>
+    </header>
+
+    <main class="card" aria-live="polite">
+      <h2 style="margin:0 0 8px 0">Payment details</h2>
+      <p class="small" style="margin:0 0 14px 0">Fill the form below. This is a static demo — no real payment is processed.</p>
+
+      <!-- simple form that submits to thankyou.html -->
+      <form action="thankyou.html" method="GET" onsubmit="return validateForm()">
+        <div class="row">
+          <div class="col">
+            <label for="name">Full name</label>
+            <input id="name" name="name" type="text" placeholder="Jane Doe" required>
+          </div>
+          <div class="col">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required>
+          </div>
+        </div>
+
+        <div>
+          <label for="address">Shipping address</label>
+          <textarea id="address" name="address" rows="2" placeholder="House no., street, city, pin" required></textarea>
+        </div>
+
+        <div style="display:flex;gap:12px;align-items:flex-end">
+          <div style="flex:1">
+            <label for="card">Card number</label>
+            <input id="card" name="card" type="text" inputmode="numeric" placeholder="4242 4242 4242 4242" required maxlength="19">
+            <div class="small" style="margin-top:6px">Use any test card number for demo.</div>
+          </div>
+
+          <div style="width:140px">
+            <label for="exp">Expiry</label>
+            <input id="exp" name="exp" type="text" placeholder="MM/YY" required maxlength="5">
+          </div>
+
+          <div style="width:100px">
+            <label for="cvv">CVV</label>
+            <input id="cvv" name="cvv" type="password" inputmode="numeric" placeholder="123" required maxlength="4">
+          </div>
+        </div>
+
+        <div class="total" style="margin-top:6px">
+          <div>
+            <div style="font-weight:800">Order total</div>
+            <div class="small">1 item — standard shipping</div>
+          </div>
+          <div style="font-size:18px;font-weight:900">₹899</div>
+        </div>
+
+        <div style="display:flex;gap:10px;margin-top:12px">
+          <button class="btn" type="submit">Proceed to Buy</button>
+          <a class="btn ghost" href="products.html" style="display:inline-flex;align-items:center;justify-content:center">Cancel</a>
+        </div>
+      </form>
+    </main>
+
+    <footer>
+      <div class="small">Demo payment form • No real transactions are performed. Save files locally and test flow.</div>
+    </footer>
+  </div>
+
+  <script>
+    // very small demo validation (non-sensitive)
+    function validateForm(){
+      // trim and quick-check required fields
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const card = document.getElementById('card').value.replace(/\s+/g,'');
+      if(name.length < 2){ alert('Please enter your full name.'); return false; }
+      if(!email.includes('@')){ alert('Please enter a valid email.'); return false; }
+      if(card.length < 12){ alert('Please enter a valid card number.'); return false; }
+      // form will submit to thankyou.html
+      return true;
+    }
+  </script>
+</body>
+</html>

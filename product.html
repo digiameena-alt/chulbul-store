@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mini Shop — Products</title>
+  <style>
+    :root{
+      --accent:#2874f0;--muted:#6b7280;--bg:#f6f8fb;--card:#fff;--shadow:0 8px 20px rgba(16,24,40,0.06);--radius:12px;--maxw:1100px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;background:var(--bg);color:#0f172a}
+    .wrap{max-width:var(--maxw);margin:28px auto;padding:18px}
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+    .brand{display:flex;gap:12px;align-items:center;text-decoration:none;color:inherit}
+    .logo{width:52px;height:52px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800}
+    .search{display:flex;gap:8px;align-items:center}
+    .search input{padding:10px 12px;border-radius:10px;border:1px solid #e6e9ef;width:260px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:14px}
+    .product{
+      background:var(--card);padding:12px;border-radius:14px;box-shadow:var(--shadow);display:flex;flex-direction:column;
+      transition:transform .18s ease, box-shadow .18s ease;
+    }
+    .product:hover{transform:translateY(-6px);box-shadow:0 18px 36px rgba(16,24,40,0.10)}
+    .product img{width:100%;height:160px;object-fit:cover;border-radius:10px}
+    .meta{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+    .price{font-weight:900;font-size:18px}
+    .desc{color:var(--muted);font-size:13px;margin:6px 0 12px 0}
+    .buyrow{margin-top:auto;display:flex;gap:8px;align-items:center}
+    .btn{background:var(--accent);color:#fff;padding:10px 12px;border-radius:10px;text-decoration:none;font-weight:700}
+    .btn.outline{background:#fff;color:var(--accent);border:1px solid rgba(40,116,240,0.12)}
+    .filters{display:flex;gap:12px;align-items:center;margin-top:10px}
+    .chip{background:#fff;padding:8px 12px;border-radius:999px;border:1px solid #f1f4f8;color:var(--muted);font-weight:700}
+    footer{margin-top:22px;color:var(--muted);text-align:center}
+    @media (max-width:520px){ .search input{width:120px} }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a href="index.html" class="brand">
+        <div class="logo">MS</div>
+        <div>
+          <div style="font-weight:800">Mini Shop</div>
+          <div style="color:var(--muted);font-size:12px">Products</div>
+        </div>
+      </a>
+
+      <div class="search">
+        <input placeholder="Search products..." aria-label="Search products">
+        <a class="btn outline" href="index.html">Back</a>
+      </div>
+    </header>
+
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+      <h2 style="margin:0">All products (6)</h2>
+      <div class="filters">
+        <div class="chip">All</div>
+        <div class="chip">Home</div>
+        <div class="chip">Accessories</div>
+        <div class="chip">Gifts</div>
+      </div>
+    </div>
+
+    <section class="grid" aria-live="polite" style="margin-top:12px">
+      <!-- product 1 -->
+      <div class="product">
+        <img src="https://picsum.photos/seed/item1/800/600" alt="Cozy Throw">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <h3 style="margin:10px 0 0 0;font-size:16px">Cozy Throw Blanket</h3>
+          <div class="price">₹899</div>
+        </div>
+        <div class="desc">Large, soft throw to keep you warm. 100% acrylic.</div>
+        <div class="buyrow">
+          <a class="btn" href="payment.html">Buy Now</a>
+          <a class="btn outline" href="#">Save</a>
+        </div>
+      </div>
+
+      <!-- product 2 -->
+      <div class="product">
+        <img src="https://picsum.photos/seed/item2/800/600" alt="Desk Lamp">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <h3 style="margin:10px 0 0 0;font-size:16px">Minimal Desk Lamp</h3>
+          <div class="price">₹1499</div>
+        </div>
+        <div class="desc">Warm/cool light, dimmable touch control.</div>
+        <div class="buyrow">
+          <a class="btn" href="payment.html">Buy Now</a>
+          <a class="btn outline" href="#">Details</a>
+        </div>
+      </div>
+
+      <!-- product 3 -->
+      <div class="product">
+        <img src="https://picsum.photos/seed/item3/800/600" alt="Mug Set">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <h3 style="margin:10px 0 0 0;font-size:16px">Ceramic Mug Set</h3>
+          <div class="price">₹499</div>
+        </div>
+        <div class="desc">Set of two — microwave & dishwasher safe.</div>
+        <div class="buyrow">
+          <a class="btn" href="payment.html">Buy Now</a>
+          <a class="btn outline" href="#">Details</a>
+        </div>
+      </div>
+
+      <!-- product 4 -->
+      <div class="product">
+        <img src="https://picsum.photos/seed/item4/800/600" alt="Canvas Tote">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <h3 style="margin:10px 0 0 0;font-size:16px">Canvas Tote</h3>
+          <div class="price">₹349</div>
+        </div>
+        <div class="desc">Durable shoulder tote, 12L capacity.</div>
+        <div class="buyrow">
+          <a class="btn" href="payment.html">Buy Now</a>
+          <a class="btn outline" href="#">Details</a>
+        </div>
+      </div>
+
+      <!-- product 5 -->
+      <div class="product">
+        <img src="https://picsum.photos/seed/item5/800/600" alt="Notebook">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <h3 style="margin:10px 0 0 0;font-size:16px">Hardcover Notebook</h3>
+          <div class="price">₹299</div>
+        </div>
+        <div class="desc">A5, 200 pages, dotted grid for neat notes.</div>
+        <div class="buyrow">
+          <a class="btn" href="payment.html">Buy Now</a>
+          <a class="btn outline" href="#">Details</a>
+        </div>
+      </div>
+
+      <!-- product 6 -->
+      <div class="product">
+        <img src="https://picsum.photos/seed/item6/800/600" alt="Plant">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <h3 style="margin:10px 0 0 0;font-size:16px">Small Potted Plant</h3>
+          <div class="price">₹249</div>
+        </div>
+        <div class="desc">Low maintenance, perfect for desks.</div>
+        <div class="buyrow">
+          <a class="btn" href="payment.html">Buy Now</a>
+          <a class="btn outline" href="#">Details</a>
+        </div>
+      </div>
+
+    </section>
+
+    <footer>
+      <div style="padding:18px 0;color:var(--muted)">© Mini Shop — product demo. All images are placeholders.</div>
+    </footer>
+  </div>
+</body>
+</html>
